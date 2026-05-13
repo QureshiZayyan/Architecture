@@ -1,0 +1,307 @@
+import image1 from '../assets/Ashish Wangh Bungalow, Udvada.JPG'
+import image2 from '../assets/Frany Bathena.JPG'
+import image3 from '../assets/Mr. Hoshang Mehta ,Dadar.jpg'
+import image4 from '../assets/Sharukh Kothawala Bungalow.JPG'
+import image5 from '../assets/Sohrab Chinoy, Parsi colony, Dadar.jpg'
+import image6 from '../assets/zal kavarana.jpg'
+
+export default function Residential() {
+
+  const projects = [
+    {
+      image: image1,
+
+
+      title: "Ashish Wang Bungalow, Udhvada"
+    },
+
+    {
+      image:
+        image2,
+
+      title: "Franey Bathena"
+    },
+
+    {
+      image:
+        image3,
+
+      title: "Mr. Hoshang Mehta ,Dadar"
+    },
+
+     {
+      image:
+        image4,
+
+      title: "Sharukh Kothawala Bungalow"
+    },
+     {
+      image:
+        image5,
+
+      title: "Sohrab Chinoy ,Parsi colony ,Dadar"
+    },
+     {
+      image:
+        image6,
+
+      title: "Sharukh Kothawala Bungalow"
+    },
+  ]
+
+  return (
+    <section className="bg-[#0F0F0F] min-h-screen text-white py-20 px-6">
+
+      <div className="max-w-3xl mx-auto">
+
+        <h1 className="text-5xl font-black mb-14">
+          Residential Projects
+        </h1>
+
+        <div className="grid md:grid-cols-3 gap-8">
+
+          {projects.map((project, index) => (
+
+            <div
+              key={index}
+              className="rounded-[30px] overflow-hidden border border-white/10 bg-white/5"
+            >
+
+              <img
+                src={project.image}
+                alt=""
+                className="w-full h-[150px] object-cover"
+              />
+
+              <div className="p-4">
+
+                <h2 className="text-2xl font-bold">
+                  {project.title}
+                </h2>
+
+              </div>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </div>
+
+    </section>
+  )
+}
+
+import { useState } from "react"
+
+import image1 from '../assets/Ashish Wangh Bungalow, Udvada.JPG'
+import image2 from '../assets/Frany Bathena.JPG'
+import image3 from '../assets/Mr. Hoshang Mehta ,Dadar.jpg'
+import image4 from '../assets/Sharukh Kothawala Bungalow.JPG'
+import image5 from '../assets/Sohrab Chinoy, Parsi colony, Dadar.jpg'
+import image6 from '../assets/zal kavarana.jpg'
+import demo1 from '../assets/img1.JPG'
+import demo2 from '../assets/img2.JPG'
+import demo3 from '../assets/img3.JPG'
+import demo4 from '../assets/img4.JPG'
+import demo5 from '../assets/img5.JPG'
+import demo6 from '../assets/img6.JPG'
+import demo7 from '../assets/img7.JPG'
+import demo8 from '../assets/20241214_180929.jpg'
+import demo9 from '../assets/20241214_181020.jpg'
+import demo10 from '../assets/20241214_181109.jpg'
+import demo11 from '../assets/20241214_181127.jpg'
+import demo12 from '../assets/20241214_181159.jpg'
+import demo13 from '../assets/20241214_181222.jpg'
+import demo14 from '../assets/20241214_181225.jpg'
+
+
+export default function Residential() {
+
+  const projects = [
+    {
+      title: "Ashish Wangh Bungalow, Udvada",
+
+      images: [
+        image1,
+        demo1,
+        demo2,
+        demo3
+      ]
+    },
+
+    {
+      title: "Franey Bathena",
+
+      images: [
+        image2,
+        demo4,
+        demo5,
+        demo6,
+        demo7
+      ]
+    },
+
+    {
+      title: "Mr. Hoshang Mehta, Dadar",
+
+      images: [
+        image3,
+        demo8,
+ demo9,
+demo10,
+demo11,
+demo12,
+demo13,
+demo14
+      ]
+    },
+
+    {
+      title: "Sharukh Kothawala Bungalow",
+
+      images: [
+        image4,
+        image2,
+        image5
+      ]
+    },
+
+    {
+      title: "Sohrab Chinoy, Parsi Colony",
+
+      images: [
+        image5,
+        image1,
+        image3
+      ]
+    },
+
+    {
+      title: "Zal Kavarana",
+
+      images: [
+        image6,
+        image4,
+        image2
+      ]
+    },
+  ]
+
+  const [selectedProject, setSelectedProject] = useState(null)
+  const [currentImage, setCurrentImage] = useState(0)
+
+  // Next Image
+  const nextSlide = () => {
+
+    setCurrentImage((prev) =>
+      prev === selectedProject.images.length - 1 ? 0 : prev + 1
+    )
+  }
+
+  // Previous Image
+  const prevSlide = () => {
+
+    setCurrentImage((prev) =>
+      prev === 0 ? selectedProject.images.length - 1 : prev - 1
+    )
+  }
+
+  return (
+    <section className="bg-[#0F0F0F] min-h-screen text-white py-20 px-4 sm:px-6">
+
+      <div className="max-w-3xl mx-auto">
+
+        {/* Heading */}
+        <h1 className="text-4xl sm:text-5xl font-black mb-14">
+          <span className="text-blue-400">Residential</span> Projects
+        </h1>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-8">
+
+          {projects.map((project, index) => (
+
+            <div
+              key={index}
+              onClick={() => {
+                setSelectedProject(project)
+                setCurrentImage(0)
+              }}
+              className="cursor-pointer rounded-[30px] overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 hover:-translate-y-0.5"
+            >
+
+              <img
+                src={project.images[0]}
+                alt=""
+                className="w-full h-[150px] object-cover"
+              />
+
+              <div className="p-5">
+
+                <h2 className="text-2xl font-bold">
+                  {project.title}
+                </h2>
+
+              </div>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </div>
+
+      {/* Modal Slider */}
+      {selectedProject && (
+
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+
+          {/* Close */}
+          <button
+            onClick={() => setSelectedProject(null)}
+            className="absolute top-6 right-6 text-white text-4xl"
+          >
+            ×
+          </button>
+
+          {/* Left Button */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 sm:left-10 text-white text-5xl"
+          >
+            ❮
+          </button>
+
+          {/* Image */}
+          <div className="max-w-5xl w-full">
+
+            <img
+              src={selectedProject.images[currentImage]}
+              alt=""
+              className="w-full h-[300px] sm:h-[500px] lg:h-[700px] object-cover rounded-[30px]"
+            />
+
+            <h2 className="text-center text-2xl sm:text-3xl font-bold mt-6">
+              {selectedProject.title}
+            </h2>
+
+          </div>
+
+          {/* Right Button */}
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 sm:right-10 text-white text-5xl"
+          >
+            ❯
+          </button>
+
+        </div>
+
+      )}
+
+    </section>
+  )
+}
