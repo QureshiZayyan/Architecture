@@ -78,7 +78,7 @@ export default function About() {
 
                     {/* Button */}
                     <button className="mt-10 bg-blue-500 hover:bg-blue-400 px-8 py-4 rounded-2xl font-semibold transition duration-300 hover:scale-105 shadow-lg shadow-blue-500/20">
-                        Learn More
+                        Explore More
                     </button>
 
                 </motion.div>

@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
 import image1 from '../assets/Ashish Wangh Bungalow, Udvada.JPG'
@@ -7,6 +7,7 @@ import image3 from '../assets/Mr. Hoshang Mehta ,Dadar.jpg'
 import image4 from '../assets/Sharukh Kothawala Bungalow.JPG'
 import image5 from '../assets/Sohrab Chinoy, Parsi colony, Dadar.jpg'
 import image6 from '../assets/zal kavarana.jpg'
+
 import demo1 from '../assets/img1.JPG'
 import demo2 from '../assets/img2.JPG'
 import demo3 from '../assets/img3.JPG'
@@ -14,6 +15,7 @@ import demo4 from '../assets/img4.JPG'
 import demo5 from '../assets/img5.JPG'
 import demo6 from '../assets/img6.JPG'
 import demo7 from '../assets/img7.JPG'
+
 import demo8 from '../assets/20241214_180929.jpg'
 import demo9 from '../assets/20241214_181020.jpg'
 import demo10 from '../assets/20241214_181109.jpg'
@@ -25,8 +27,8 @@ import demo14 from '../assets/20241214_181225.jpg'
 export default function Residential() {
 
   useEffect(() => {
-  window.scrollTo(0, 0)
-}, [])
+    window.scrollTo(0, 0)
+  }, [])
 
   const projects = [
     {
@@ -101,32 +103,36 @@ export default function Residential() {
   const [selectedProject, setSelectedProject] = useState(null)
   const [currentImage, setCurrentImage] = useState(0)
 
-  // Next
+  // NEXT
   const nextSlide = () => {
 
     setCurrentImage((prev) =>
-      prev === selectedProject.images.length - 1 ? 0 : prev + 1
+      prev === selectedProject.images.length - 1
+        ? 0
+        : prev + 1
     )
   }
 
-  // Prev
+  // PREV
   const prevSlide = () => {
 
     setCurrentImage((prev) =>
-      prev === 0 ? selectedProject.images.length - 1 : prev - 1
+      prev === 0
+        ? selectedProject.images.length - 1
+        : prev - 1
     )
   }
 
   return (
     <section className="bg-[#0F0F0F] min-h-screen text-white py-20 px-4 sm:px-6 overflow-hidden">
 
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
 
-        {/* Heading */}
+        {/* HEADING */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.3 }}
           viewport={{ once: true }}
           className="mb-16"
         >
@@ -143,48 +149,57 @@ export default function Residential() {
 
         </motion.div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-8">
+        {/* CARDS */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
           {projects.map((project, index) => (
 
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 70 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.6,
-                delay: index * 0.12
+                duration: 0.25,
+                delay: index * 0.05
               }}
               viewport={{ once: true }}
+              whileHover={{ y: -6 }}
               onClick={() => {
                 setSelectedProject(project)
                 setCurrentImage(0)
               }}
-              className="group cursor-pointer rounded-[30px] overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition duration-500 hover:-translate-y-2"
+              className="group relative cursor-pointer rounded-[24px] overflow-hidden bg-[#161616] border border-white/10"
             >
 
-              {/* Image */}
-              <div className="overflow-hidden">
+              {/* IMAGE */}
+              <div className="overflow-hidden h-[260px]">
 
                 <img
+                  loading="lazy"
                   src={project.images[0]}
                   alt=""
-                  className="w-full h-[180px] object-cover group-hover:scale-110 transition duration-700"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 />
 
               </div>
 
-              {/* Content */}
-              <div className="p-6">
+              {/* OVERLAY */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
 
-                <h2 className="text-2xl font-black group-hover:text-blue-400 transition duration-300">
+              {/* CONTENT */}
+              <div className="absolute bottom-0 left-0 p-5 z-10">
+
+                <h2 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
                   {project.title}
                 </h2>
 
-                <p className="text-gray-400 mt-3 text-sm leading-7">
+                <p className="text-sm text-gray-300 mt-2">
                   Click to explore project gallery
                 </p>
+
+                <button className="mt-4 px-5 py-2 rounded-full bg-white text-black text-sm font-semibold hover:bg-blue-400 hover:text-white transition duration-300">
+                  Explore
+                </button>
 
               </div>
 
@@ -196,7 +211,7 @@ export default function Residential() {
 
       </div>
 
-      {/* Modal */}
+      {/* MODAL */}
       <AnimatePresence>
 
         {selectedProject && (
@@ -208,61 +223,50 @@ export default function Residential() {
             className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
           >
 
-            {/* Close */}
+            {/* CLOSE */}
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-5 right-6 text-white text-5xl hover:text-blue-400 transition"
+              className="absolute top-5 right-6 text-white text-5xl hover:text-blue-400 transition z-50"
             >
               ×
             </button>
 
-            {/* Left */}
+            {/* LEFT */}
             <button
               onClick={prevSlide}
-              className="absolute left-3 sm:left-8 text-white text-5xl hover:text-blue-400 transition"
+              className="absolute left-3 sm:left-8 text-white text-5xl hover:text-blue-400 transition z-50"
             >
               ❮
             </button>
 
-            {/* Content */}
+            {/* IMAGE AREA */}
             <div className="max-w-6xl w-full text-center">
 
               <motion.img
                 key={currentImage}
-                initial={{
-                  opacity: 0,
-                  scale: 0.95
-                }}
-                animate={{
-                  opacity: 1,
-                  scale: 1
-                }}
-                transition={{
-                  duration: 0.4
-                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.18 }}
+                loading="lazy"
                 src={selectedProject.images[currentImage]}
                 alt=""
-                className="w-full h-[300px] sm:h-[500px] lg:h-[750px] object-cover rounded-[30px] shadow-2xl"
+                className="w-full h-[300px] sm:h-[500px] lg:h-[700px] object-cover rounded-[24px]"
               />
 
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-2xl sm:text-4xl font-black mt-8"
-              >
+              {/* TITLE */}
+              <h2 className="text-2xl sm:text-4xl font-black mt-8">
                 {selectedProject.title}
-              </motion.h2>
+              </h2>
 
-              {/* Dots */}
-              <div className="flex justify-center gap-3 mt-6">
+              {/* DOTS */}
+              <div className="flex justify-center gap-3 mt-6 flex-wrap">
 
                 {selectedProject.images.map((_, i) => (
 
                   <div
                     key={i}
                     onClick={() => setCurrentImage(i)}
-                    className={`w-3 h-3 rounded-full cursor-pointer transition duration-300 ${
+                    className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
                       currentImage === i
                         ? "bg-blue-400 scale-125"
                         : "bg-white/30"
@@ -275,10 +279,10 @@ export default function Residential() {
 
             </div>
 
-            {/* Right */}
+            {/* RIGHT */}
             <button
               onClick={nextSlide}
-              className="absolute right-3 sm:right-8 text-white text-5xl hover:text-blue-400 transition"
+              className="absolute right-3 sm:right-8 text-white text-5xl hover:text-blue-400 transition z-50"
             >
               ❯
             </button>
